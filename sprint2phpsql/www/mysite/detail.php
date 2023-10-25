@@ -7,8 +7,8 @@
 <head>
 <style>
 img{
-width: 200 px;
-height: 150 px;
+width: 400px;
+height: 250px;
 }
 </style>
 </head>
@@ -19,7 +19,6 @@ die ('no se ha especificado un juego');
 }
 
 $juego_id = $_GET ['id'];
-echo $juego_id;
 $query  = 'SELECT * FROM tjuegos WHERE id =' . $juego_id;
 $result = mysqli_query($db, $query) or die ('Query error');
 $game_data = mysqli_fetch_array($result);
