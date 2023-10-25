@@ -1,3 +1,4 @@
+
 <?php
 		$db = mysqli_connect('localhost','root','1234','mysitedb') or die ('Fail');
 ?>
@@ -5,14 +6,15 @@
 <html>
 <head>
 <style>
-#game-image{
-max-width: 400 px;
-max-height: 200 px;
+img{
+width: 200 px;
+height: 150 px;
 }
 </style>
 </head>
+<body>
 <?php
-if (!isset($_get['id'])){
+if (!isset($_GET['id'])){
 die ('no se ha especificado un juego');
 }
 
@@ -30,15 +32,15 @@ echo '<p>' . $game_data['descripcion'] . '</p>';
 <h3> Comentarios: </h3>
 <form action ="/comment.php" method="post">
 <textarea rows="4" cols="50" name="new_comment"></textarea><br>
-<input type ="hidden" name="juego_id" values="<?php echo $cancion_id; ?">
+<input type ="hidden" name="juego_id" value="<?php echo $juego_id; ?>">
 <input type="submit" value="comentar">
 </form>
-</ul>
+<ul>
 <?php
-$query_comments = 'SELECT * FROM tcomentarios WHERE juego_id=' , $juego_id;
+$query_comments = 'SELECT * FROM tcomentarios WHERE juego_id=' . $juego_id;
 $result_comments = mysqli_query($db,$query_comments) or die ('Query error');
-while ($comments_row = mysqli_fetch_array($result_comments)){
-echo '<li>' , $comment_row['comentario'] , '</li>';
+while ($comment_row = mysqli_fetch_array($result_comments)){
+echo '<li>' . $comment_row['comentario'].'<br>fecha: ' . $comment_row['fecha'] . '</li>';
 }
 mysqli_close($db);
 ?>

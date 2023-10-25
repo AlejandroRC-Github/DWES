@@ -38,7 +38,7 @@ max-width: 180px;
 </head>
 
 <body>
-<h1>Juegos favoritos de los que he jugado</h1>
+<h1>Mejores títulos a los que he jugado</h1>
 <table>
 <tr>
 <th>Id</th>
@@ -57,8 +57,9 @@ echo '<td>' . $row['id'] . '</td>';
 echo '<td><a href="detail.php?id=' . $row['id'] . '">'. $row['nombre'] . '</a></td>';
 echo '<td><img src="' . $row['url_imagen'] . '" class="game-image"></td>';
 echo '<td>' . $row['año_salida'] . '</td>';
-echo '<td>' . $row['descripcion'] . '€' . '</td>';
+echo '<td>' . $row['descripcion'] . '</td>';
 }
+
 mysql_close($db);
 ?>
 </table>
