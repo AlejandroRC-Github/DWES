@@ -1,3 +1,10 @@
+import random
+contadorAliado = 0
+contadorEnemigo = 0
+
+i = 0
+while i < 5:
+    i += 1
     print("BIENVENIDO AL JUEGO DE PIEDRA PAPEL TIJERA")
     print()
     print("POSIBLES JUGADAS")
@@ -21,7 +28,7 @@
         contadorEnemigo += 1
     elif jugada == 'papel' and aleatorio == 'piedra':
         print()
-        print("Has ganado, papel gana a pedra")
+        print("Has ganado, papel gana a piedra")
         contadorAliado += 1
     elif jugada == 'piedra' and aleatorio == 'tijeras':
         print()
@@ -40,11 +47,9 @@
         print("Has ganado, tijeras gana a papel")
         contadorAliado += 1
 
-
-
 if contadorAliado > contadorEnemigo:
     print("Has ganado. ¡Enhorabuena!")
 elif contadorEnemigo > contadorAliado:
-    print("Has perdido.")
+    print("Has perdido")
 elif contadorEnemigo > contadorAliado:
-    print("Habéis empatado")
+    print("Habéis empatado ")
