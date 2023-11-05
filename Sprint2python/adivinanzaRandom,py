@@ -1,0 +1,43 @@
+import random
+
+def mostrar_adivinanza(pregunta, opciones, respuesta_correcta):
+    print(pregunta)
+    for opcion in opciones:
+        print(opcion)
+    respuesta_usuario = input("Ingresa tu respuesta (a, b o c): ").lower()
+    if respuesta_usuario == respuesta_correcta:
+        return 10
+    else:
+        return -5
+
+
+def main():
+    preguntas = [
+        {
+            'pregunta': "En la noche se extiende,sin estrellas se hace presente.En el día se esconde sin cesar,¿qué es, que siempre está?",
+            'opciones': ['a) La luna.', 'b) La oscuridad.', 'c) El día y la noche.'],
+            'respuesta_correcta': 'a'
+        },
+        {
+            'pregunta': "Blanca por dentro, verde por fuera. Si quieres que te lo diga, espera.",
+            'opciones': ['a) Manzana', 'b) Sandía', 'c) Pera'],
+            'respuesta_correcta': 'a'
+        },
+        {
+            'pregunta': "Es pequeño como un ratón,pero guarda un gran tesoro en su interior.Todos lo quieren tener en su bolsillo,¿qué es este objeto sencillo?",
+            'opciones': ['a) La moneda', 'b) El diamante.', 'c) El bolsillo'],
+            'respuesta_correcta': 'c'
+        }
+    ]
+
+    adivinanzas_seleccionadas = random.sample(preguntas, 2)
+
+    puntuacion = 0
+    for pregunta in adivinanzas_seleccionadas:
+        puntuacion += mostrar_adivinanza(pregunta["pregunta"], pregunta["opciones"], pregunta["respuesta_correcta"])
+
+    print("¡Juego terminado!")
+    print(f"Tu puntuación final es: {puntuacion}")
+
+if name == "main":
+    main()
