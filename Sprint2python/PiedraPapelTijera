@@ -1,0 +1,50 @@
+    print("BIENVENIDO AL JUEGO DE PIEDRA PAPEL TIJERA")
+    print()
+    print("POSIBLES JUGADAS")
+    print("================")
+    print("1.- piedra")
+    print("2.- papel")
+    print("3.- tijeras")
+    print()
+    jugada = input("Seleccione una jugada de entre las siguientes: piedra, papel, tijeras: ")
+
+    jugadas_array = ["piedra", "papel", "tijeras"]
+
+    aleatorio = random.choice(jugadas_array)
+
+    if jugada == aleatorio:
+        print()
+        print("Has empatado. Esta ronda no se contará")
+    elif jugada == 'piedra' and aleatorio == 'papel':
+        print()
+        print("Has perdido, papel gana a piedra")
+        contadorEnemigo += 1
+    elif jugada == 'papel' and aleatorio == 'piedra':
+        print()
+        print("Has ganado, papel gana a pedra")
+        contadorAliado += 1
+    elif jugada == 'piedra' and aleatorio == 'tijeras':
+        print()
+        print("Has ganado, piedra gana a tijeras")
+        contadorAliado += 1
+    elif jugada == 'tijeras' and aleatorio == 'piedra':
+        print()
+        print("Has perdido, piedra gana a tijeras")
+        contadorEnemigo += 1
+    elif jugada == 'papel' and aleatorio == 'tijeras':
+        print()
+        print("Has perdido, tijeras gana a papel")
+        contadorEnemigo += 1
+    elif jugada == 'tijeras' and aleatorio == 'papel':
+        print()
+        print("Has ganado, tijeras gana a papel")
+        contadorAliado += 1
+
+
+
+if contadorAliado > contadorEnemigo:
+    print("Has ganado. ¡Enhorabuena!")
+elif contadorEnemigo > contadorAliado:
+    print("Has perdido.")
+elif contadorEnemigo > contadorAliado:
+    print("Habéis empatado")
