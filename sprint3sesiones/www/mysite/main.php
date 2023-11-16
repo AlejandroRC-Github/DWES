@@ -1,6 +1,6 @@
-<?php
-
-	$db = mysqli_connect('localhost','root','1234','mysitedb') or die ('Fail');
+?php
+        session_start();
+        $db = mysqli_connect('localhost','root','1234','mysitedb') or die ('Fail');
 ?>
 <html>
 <head>
@@ -29,14 +29,33 @@ padding:8px;
 th{
 background-color:#ffffff;
 }
-
 .game-image{
 max-width: 180px;
 }
+
+tr {
+        padding: 0;
+        border: 1px solid black;
+        }
+
+        td {
+            padding: 10px;
+            margin: 5px;
+            background-color: #F0F0F0F0;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        td:hover {
+                opacity:0,7;
+                background-color:grey;
+        }
 </style>
 </head>
 
 <body>
+<a href="logout.php">Cerrar Sesion</a>
+<a href="change_password.html">Cambiar Contraseña</a>
 <h1>Mejores títulos a los que he jugado</h1>
 <table>
 <tr>
