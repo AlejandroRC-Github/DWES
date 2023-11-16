@@ -1,0 +1,26 @@
+!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+        <script>
+        function validar(){
+        var email=document.getElementById('f_email').value;
+        var contraseña=document.getElementById('f_password').value;
+        if (email === '' || contraseña === ''){
+        alert('no te estas logueando');
+        return false;
+}
+        return true;
+}
+        </script>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="login.php" method="post" onsubmit="return validar()">
+       <input name="f_email" type="text" placeholder="e-mail"><br>
+       <input name="f_password" type="password" placeholder="Contraseña"><br>
+       <input type="submit" value="Iniciar sesión">
+    </form>
+</body>
+</html>
