@@ -1,6 +1,6 @@
-
 <?php
-		$db = mysqli_connect('localhost','root','1234','mysitedb') or die ('Fail');
+        session_start();        
+        $db = mysqli_connect('localhost','root','1234','mysitedb') or die ('Fail');
 ?>
 
 <html>
@@ -39,10 +39,11 @@ echo '<p>' . $game_data['descripcion'] . '</p>';
 $query_comments = 'SELECT * FROM tcomentarios WHERE juego_id=' . $juego_id;
 $result_comments = mysqli_query($db,$query_comments) or die ('Query error');
 while ($comment_row = mysqli_fetch_array($result_comments)){
-echo '<li>' . $comment_row['comentario'].'<br>fecha: ' . $comment_row['fecha'] . '</li>';
+echo '<li>' . $comment_row['comentario'].'</li>';
 }
 mysqli_close($db);
 ?>
 </ul>
+<a href="logout.php">Cerrar Sesion</a>
 </body>
 </html>
