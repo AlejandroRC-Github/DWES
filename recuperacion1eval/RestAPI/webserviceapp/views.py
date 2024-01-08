@@ -29,21 +29,23 @@ def devolver_juego_por_id(request,juego_id):
 	resultado = {
 		'id':juego.id,
 		'titulo':juego.nombre,
+		'url_imagen':juego.url_imagen,
 		'fecha':juego.año_publicacion,
 		'comentarios':lista_comentarios
 	}
 	return JsonResponse(resultado, json_dumps_params={'ensure_ascii': False})
 
-@csrf_exempt	
+@csrf_exempt
+
 def devolver_comentario(request, juego_id):
 	if request.method != 'POST':
-		return None;
+		return None
 
 	json_peticion = json.loads(request.body)
 	comentario = Tcomentarios()
 	comentario.comentario = json_peticion['nuevo_comentario']
-	comentario.juego = Tjuegos.objects.get(id = juego_id)
+	comentario.juego = Tjuegos.objects.get(juego = juego_id)
 	comentario.save()
-	return JsonResponse({"status":"ok"})
+	return JsonResponse({"status": "ok"})
 
 # Create your views here.
