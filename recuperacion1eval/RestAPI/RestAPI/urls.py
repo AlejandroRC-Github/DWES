@@ -20,7 +20,7 @@ from webserviceapp import views
 urlpatterns = [
     path('juegos/', views.devolver_juego),
     path('juegos/<int:juego_id>/', views.devolver_juego_por_id),
-    path('juegos/<int:juego_id>/comentario', views.devolver_comentario)
+    path('juegos/<int:juego_id>/comentarios', views.devolver_comentarios)
 ]
 
 #from webserviceapp import views

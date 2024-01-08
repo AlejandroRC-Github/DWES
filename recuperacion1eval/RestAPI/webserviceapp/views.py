@@ -37,15 +37,30 @@ def devolver_juego_por_id(request,juego_id):
 
 @csrf_exempt
 
-def devolver_comentario(request, juego_id):
-	if request.method != 'POST':
-		return None
+def devolver_comentarios(request, juego_id):
+    if request.method != 'POST':
+        return JsonResponse({"error": "Método HTTP no soportado."}, status=405)
 
-	json_peticion = json.loads(request.body)
-	comentario = Tcomentarios()
-	comentario.comentario = json_peticion['nuevo_comentario']
-	comentario.juego = Tjuegos.objects.get(juego = juego_id)
-	comentario.save()
-	return JsonResponse({"status": "ok"})
+    try:
+        json_peticion = json.loads(request.body)
+        nuevo_comentario = json_peticion.get('nuevo_comentario')
 
-# Create your views here.
+        if not nuevo_comentario:
+            return JsonResponse({"error": "Falta el nuevo comentario en la solicitud."}, status=400)
+
+        juego = Tjuegos.objects.get(id=juego_id)
+        comentario = Tcomentarios(comentario=nuevo_comentario, juego=juego)
+        comentario.save()
+
+        comentarios_actualizados = list(juego.tcomentarios_set.values('id', 'comentario'))
+
+        return JsonResponse({"status": "ok", "comentarios": comentarios_actualizados}, status=201)
+
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Error al decodificar el JSON."}, status=400)
+    except Tjuegos.DoesNotExist:
+        return JsonResponse({"error": "El juego no existe."}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+
